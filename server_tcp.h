@@ -9,6 +9,7 @@
 #include <QtNetwork> // для работы с сетью
 #include <QByteArray> // для работы с пригодными к передаче данными
 #include <QDebug> // для вывода сообщений в консоль
+#include <QMap> // для векторов
 
 class TcpServer : public QObject
 {
@@ -22,8 +23,7 @@ public slots:
     void slotServerRead(); // слот чтения сервера
 private:
     QTcpServer* mTcpServer; // сервер
-    QTcpSocket* mTcpSocket; // текущее соединение
-
+    QMap<int, QTcpSocket*> sockets; // вектор сокетов
 };
 
 #endif // SERVER_TCP_H
